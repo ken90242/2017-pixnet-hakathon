@@ -1,0 +1,24 @@
+<div id="container">
+  <header class="header">
+    <span>2017 PIXNET HACKATHON</span>
+  </header>
+  <main>
+    <div
+      v-for="line in lines"
+      class="line"
+      :class="line.type === 'left' ? 'left_line' : 'right_line'">
+      <img v-if="line.type === 'left'" class="photo" :src="line.img_src">
+      <div class="message">
+        {{ line.message }}
+      </div>
+    </div>
+  </main>
+  <footer class="submitMessage">
+    <div class="inputWrapper">
+      <input type="text" placeholder="Aa" @keypress.enter="sendMessage"/>
+    </div>
+    <div class="sendIconWrapper" @click="sendMessage">
+      <i class="fa fa-play fa-2x"></i>
+    </div>
+  </footer>
+</div>

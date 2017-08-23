@@ -1,4 +1,5 @@
 node_modules/
-.sass-cache
+dist/
 yarn.lock
-stylesheets/
+package-lock.json
+yarn-error.log

@@ -1,0 +1,134 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+#container {
+  width: 100%;
+  overflow-y: auto;
+  .header {
+    z-index: 999;
+    position: fixed;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-weight: bolder;
+    font-size: 20px;
+    height: 50px;
+    width: 100%;
+    background-color: #eee;
+  }
+  main {
+    z-index: 2;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    &:after {
+      content: ' ';
+      display: block;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-image: url('https://t.kfs.io/upload_images/64042/1000x525_kktixCover_large.jpg');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center; 
+      opacity: .5;
+    }
+  }
+  .submitMessage {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #ddd;
+    padding-top: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .inputWrapper {
+      height: 60px;
+      flex-grow:1;
+      padding: 5px 10px;
+      input {
+        width: 100%;
+        outline: none;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 100px;
+        font-size: 20px;
+        word-break: break-all;
+      }
+    }
+    .sendIconWrapper {
+      padding: 0 20px 0 10px;
+      &:hover {
+        cursor: hand;
+      }
+      i {
+        color: #0084F7;
+      }
+    }
+  }
+}
+
+.line {
+  display: flex;
+  margin: 5px;
+  margin-bottom: 15px;
+  .photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .message {
+    position: relative;
+    max-width: 80%;
+    padding: 10px 16px;
+    border-radius: 16px;
+    font-size: 20px;
+    letter-spacing: .6px;
+    word-break: break-all;
+    &:before {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 6;
+      border: 10px solid;
+      border-color: #ddd #ddd transparent transparent;
+    }
+  }
+}
+
+.line.left_line {
+  justify-content: flex-start;
+  .photo {
+    margin-right: 10px;
+  }
+  .message {
+    background-color: #ddd;
+    color: black;
+    &:before {
+      left: -8px;
+      border-color: #ddd #ddd transparent transparent;
+    }
+  }
+}
+
+.line.right_line {
+  justify-content: flex-end;
+  margin-right: 10px;
+  .message {
+    background-color: #2a92e5;
+    color: white;
+    &:before {
+      right: -8px;
+      border-color: #2a92e5 transparent transparent #2a92e5;
+    }
+  }
+}
