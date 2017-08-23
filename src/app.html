@@ -11,6 +11,7 @@
       <div class="message">
         {{ line.message }}
       </div>
+      <i v-if="line.type === 'right'" class="fa fa-check-circle fa-1x readCircle"></i>
     </div>
   </main>
   <footer class="submitMessage">

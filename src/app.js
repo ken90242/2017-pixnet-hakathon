@@ -1,16 +1,16 @@
-import '../static/font-awesome/css/font-awesome.min.css';
 import s from './app.scss';
 
 const socket = io();
 
 export default {
   mounted() {
+    document.querySelector('.inputWrapper > input').focus();
     const { lines } = this;
     socket.on('message', (message) => {
       lines.push({
         type: 'left',
         message,
-        img_src: 'https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg',
+        img_src: '/image/robot.jpg',
       });
     });
   },
@@ -34,7 +34,6 @@ export default {
       this.lines.push({
         type: 'right',
         message,
-        img_src: 'https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg',
       });
     },
   },

@@ -4,10 +4,11 @@ const router = require('koa-router')();
 const axios = require('axios');
 const path =require('path');
 const serve = require('koa-static');
-const webpack = require('webpack')
-const webpackConfig = require('./webpack.config.js')
+const webpack = require('webpack');
+const slogger = require('slogged');
+const webpackConfig = require('./webpack.config.js');
 
-const compiler = webpack(webpackConfig)
+const compiler = webpack(webpackConfig);
 
 const devMiddleware = require('koa-webpack-dev-middleware')(compiler, {
   publicPath: '/',
@@ -15,20 +16,22 @@ const devMiddleware = require('koa-webpack-dev-middleware')(compiler, {
     colors: true,
     chunks: false
   }
-})
+});
 
 const app = new Koa();
 
-// app.use(logger);
+app.use(logger);
+
+app.use(serve('./static'));
 
 // serve webpack bundle output
-app.use(devMiddleware)
+app.use(devMiddleware);
 
 const http = require('http').Server(app.callback());
 const io = require('socket.io')(http);
+io.use(slogger())
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
   socket.emit('message', '哈囉！問我一些是非題吧！');
   socket.on('message', (msg) => {
     axios({
@@ -39,9 +42,6 @@ io.on('connection', (socket) => {
       const message = res.data.answer;
       socket.emit('message', message);
     });
-  });
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
   });
 });
 
