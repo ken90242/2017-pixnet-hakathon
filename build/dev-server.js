@@ -20,7 +20,7 @@ const devMiddleware = require('koa-webpack-dev-middleware')(compiler, {
 
 const app = new Koa();
 
-app.use(logger);
+// app.use(logger);
 
 app.use(serve('./static'));
 
@@ -32,16 +32,19 @@ const io = require('socket.io')(http);
 io.use(slogger())
 
 io.on('connection', (socket) => {
-  socket.emit('message', '哈囉！問我一些是非題吧！');
-  socket.on('message', (msg) => {
+  socket.emit('message', { id: null, message: 'I can only say yes or no' });
+  socket.on('message', ({ id, message }) => {
     axios({
-      method:'get',
-      url:'https://yesno.wtf/api',
-      responseType:'json'
+      method: 'get',
+      url: 'https://yesno.wtf/api',
+      responseType: 'json',
     }).then((res) => {
       const message = res.data.answer;
-      socket.emit('message', message);
+      socket.emit('message', { id, message });
     });
+    setTimeout(function() {
+      socket.emit('received', id);
+    }, 5000);
   });
 });
 

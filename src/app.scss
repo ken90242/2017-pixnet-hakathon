@@ -11,11 +11,12 @@ html, body {
     z-index: 999;
     position: fixed;
     padding: 0px;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items:center;
     font-size: 20px;
-    height: 80px;
+    height: 65px;
     width: 100%;
     background-color: #2a92e5;
     color: white;
@@ -41,6 +42,26 @@ html, body {
       opacity: .5;
     }
   }
+
+  .notification {
+    background-color: #2a92e5;
+    color: white;
+    font-size: 20px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    overflow: hidden;
+    transition: all .5s;
+  }
+
+  .slideUp {
+    bottom: 76px;
+  }
+
   .submitMessage {
     width: 100%;
     position: fixed;
@@ -88,9 +109,10 @@ html, body {
     border-radius: 50%;
   }
   .readCircle {
-    margin-left: 4px;
+    position: absolute;
+    right: 8px;
     color: #2a92e5;
-    background-color: white;
+    transition: 0s;
   }
   .message {
     position: relative;
@@ -112,6 +134,16 @@ html, body {
   }
 }
 
+.ifRead {
+    position: absolute;
+    top: 0px;
+    right: 4px;
+    color: #2a92e5; 
+    width:20px;
+    height:20px;
+    transition: top .3s ease;
+  }
+
 .line.left_line {
   justify-content: flex-start;
   .photo {
@@ -132,9 +164,14 @@ html, body {
   .message {
     background-color: #2a92e5;
     color: white;
+    margin-right: 30px;
     &:before {
       right: -8px;
       border-color: #2a92e5 transparent transparent #2a92e5;
     }
   }
+}
+
+.none {
+  visibility: hidden;
 }
