@@ -40,11 +40,13 @@ io.on('connection', (socket) => {
       responseType: 'json',
     }).then((res) => {
       const message = res.data.answer;
-      socket.emit('message', { id, message });
+      setTimeout(function() {
+        socket.emit('message', { id, message });
+      },1500)
     });
     setTimeout(function() {
       socket.emit('received', id);
-    }, 5000);
+    }, 400);
   });
 });
 

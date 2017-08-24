@@ -1,4 +1,5 @@
 import s from './app.scss';
+import genId from './utils/generateId'
 
 const socket = io();
 window.scrollTo(0, 1);
@@ -60,7 +61,7 @@ export default {
     },
     sendMessage() {
       const message = document.querySelector('input').value;
-      const id = Math.random().toString();
+      const id = genId();
       if (message === '') return;
       document.querySelector('input').value = '';
       socket.emit('message', { id, message });
