@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
       const message = res.data.answer;
       setTimeout(function() {
         socket.emit('message', { id, message });
-      },1500)
+      },100)
     });
     setTimeout(function() {
       socket.emit('received', id);

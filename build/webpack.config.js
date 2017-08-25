@@ -33,14 +33,14 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        loaders: [ 'style-loader', 'css-loader','resolve-url-loader', 'sass-loader' ]
       },
       {
         test: /\.css$/,
         loaders: [ 'style-loader', 'css-loader' ]
       },
       {
-        test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        test: /\.(jpe|jpg|png|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
         loaders: [ 'file-loader' ]
       },
       {

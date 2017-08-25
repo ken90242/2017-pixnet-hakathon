@@ -2,7 +2,8 @@
   <header class="header">
     <span>2017 PIXNET HACKATHON</span>
   </header>
-  <main>
+  <main 
+    class="main">
     <div
       v-for="line in lines"
       class="line"
@@ -21,7 +22,7 @@
     </div>
     <img
       class="ifRead"
-      src="/image/mandam.png"
+      :src="imgs.mandam"
       ref="ifRead"/>
   </main>
   <div class="notification" :class="scrolledBottom ? '' : 'slideUp'">

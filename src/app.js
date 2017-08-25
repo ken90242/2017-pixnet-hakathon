@@ -1,5 +1,7 @@
 import s from './app.scss';
 import genId from './utils/generateId'
+import '../static/font-awesome/css/font-awesome.min.css';
+import mandam from '../static/image/mandam.png';
 
 const socket = io();
 window.scrollTo(0, 1);
@@ -17,7 +19,7 @@ export default {
       lines.push({
         type: 'left',
         message,
-        img_src: '/image/mandam.png',
+        img_src: this.imgs.mandam,
       });
       if ((window.outerHeight + window.scrollY) < document.body.scrollHeight) {
         this.scrolledBottom = false;
@@ -47,6 +49,9 @@ export default {
   },
   data() {
     return {
+      imgs: {
+        mandam,
+      },
       lines: [],
       readStatusTable: {},
       lastReadAvaPosition: 0,
